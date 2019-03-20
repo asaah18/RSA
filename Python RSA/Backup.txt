@@ -1,0 +1,366 @@
+file = open("encryption.txt", "r")
+x = file.read()
+y =[]
+z =[]
+i=0
+
+
+while i < len(x):
+    y.append(ord(x[i]))
+    i=i+1
+
+print("aa")    
+i = 0
+while i < len(y):
+    print(y[i])
+    i=i+1
+
+i = 0
+while i < len(y):
+    z.append(bin(y[i]))
+    i=i+1
+    
+i = 0
+while i < len(z):
+    print(z[i])
+    i=i+1
+
+print(bin(y[0]))
+file.close()
+
+..................................
+file = open("encryption.txt", "r")
+TextPlain = file.read()
+TextAscii =[]
+TextBin =[]
+i=0
+
+def convertToBinary(n):
+   # Function to print binary number for the input decimal using recursion
+   if n > 1:
+       convertToBinary(n//2)
+   print(n % 2,end = '')
+   return n
+
+
+while i < len(TextPlain):
+    TextAscii.append(ord(TextPlain[i]))
+    i=i+1
+
+print("TextAscii:")    
+i = 0
+while i < len(TextAscii):
+    print(TextAscii[i])
+    i=i+1
+
+i = 0
+while i < len(TextAscii):
+    if TextAscii[i] > 1:
+        TextBin=convertToBinary(TextAscii[i])
+    i=i+1
+print("TextBin") 
+print(TextBin) 
+i = 0
+while i < len(TextBin):
+    print(TextBin[i])
+    i=i+1
+
+#print(bin(y[0]))
+file.close()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+file = open("encryption.txt", "r")
+x = file.read()
+y =[]
+z =[]
+i=0
+a=0
+
+
+while i < len(x):
+    y.append(ord(x[i]))
+    i=i+1
+
+print("aa")    
+i = 0
+while i < len(y):
+    print(y[i])
+    i=i+1
+
+i = 0
+while i < len(y):
+    
+    a=f'{y[i]:08b}'
+    z.append(a)
+    i=i+1
+    
+i = 0
+while i < len(z):
+    print(z[i])
+    i=i+1
+
+file.close()
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+file = open("encryption.txt", "r")
+TextPlain = file.read()
+TextAscii =[]
+TextBin =[]
+i=0
+a=0
+
+
+while i < len(TextPlain):
+    TextAscii.append(ord(TextPlain[i]))
+    i=i+1
+
+print("TextAscii")    
+i = 0
+while i < len(TextAscii):
+    print(TextAscii[i])
+    i=i+1
+
+    
+print("TextBin")  
+i = 0
+while i < len(TextAscii):    
+    a=f'{TextAscii[i]:08b}'
+    TextBin.append(a)
+    i=i+1
+    
+i = 0
+while i < len(TextBin):
+    print(TextBin[i])
+    i=i+1
+    
+
+b=(format(0,'08b'))
+print(b)
+i = 0
+
+while i < len(TextBin):
+    a=TextBin[i]
+    b=b+a
+    i=i+1
+
+print("b is ")
+print(b)
+
+print("D")
+bin_b = b
+print(bin_b)
+print(int(bin_b, 2))
+
+
+
+file.close()
+
+???????????????????????????????????????????
+file = open("encryption.txt", "r")
+TextEncrp = file.read()
+TextEncrpInt =[]
+TextEncrpBin  =[]
+TextEncrpAscii  =[]
+
+
+print("TextEncrp") 
+print(TextEncrp) 
+str(TextEncrp)
+
+
+i=0
+
+#print(len(TextEncrp))
+
+if(len(TextEncrp)%2==1):
+    start=1
+    End=0
+else :
+    start=2
+    End=0
+
+
+
+while i < len(TextEncrp)/2:
+    Temp=int(TextEncrp[End:start])
+    #print(Temp)
+    TextEncrpInt.append(Temp)
+    start=start+2
+    End=End+2
+    i=i+1
+    
+print("TextEncrpInt")
+print(TextEncrpInt)
+
+i=0
+while i < len(TextEncrpInt):
+    Temp=f'{TextEncrpInt[i]:08b}'
+    TextEncrpBin.append(Temp)
+    #print(Temp)
+    i=i+1
+
+print(TextEncrpBin)
+
+str(TextEncrpBin)
+print(TextEncrpBin)
+
+i=0
+while i < len(TextEncrpBin):
+    #TextEncrpAscii.append(ord(TextEncrpBin[i]))
+    i=i+1
+
+print(TextEncrpAscii)
+#file.close()
+/////////////////////////////////////////////////////////////////////
+1
+file = open("plaintext.txt", "r")
+TextPlain = file.read()
+TextAscii =[]
+TextBin =[]
+i=0
+Temp=0
+
+
+while i < len(TextPlain):
+    TextAscii.append(ord(TextPlain[i]))
+    i=i+1
+
+print("TextAscii")    
+i = 0
+while i < len(TextAscii):
+    print(TextAscii[i])
+    i=i+1
+
+    
+print("TextBin")  
+i = 0
+while i < len(TextAscii):    
+    Temp=f'{TextAscii[i]:08b}'
+    TextBin.append(Temp)
+    i=i+1
+    
+i = 0
+while i < len(TextBin):
+    print(TextBin[i])
+    i=i+1
+    
+
+TextBinFull=(format(0,'08b'))
+print(TextBinFull)
+i = 0
+
+while i < len(TextBin):
+    Temp=TextBin[i]
+    TextBinFull=TextBinFull+Temp
+    i=i+1
+
+print("TextBinFull is ")
+print(TextBinFull)
+
+print("TextInt is")
+TextInt = int(TextBinFull, 2)
+print(TextInt)
+#Encryption
+
+
+
+
+#
+
+file2 = open("encryption.txt", "w")
+
+file2.write('%d' % TextInt)
+file2.close()
+#file.close()
+
+2
+file = open("encryption.txt", "r")
+TextEncrp = file.read()
+TextEncrpInt =[]
+TextEncrpBin  =[]
+TextEncrpAsc =[]
+Encrpt = []
+EncrptBinList = []
+yyy = []
+
+print("TextEncrp") 
+print(TextEncrp)
+
+x = TextEncrp
+#print("x")
+#print(x)
+EncrptBin = int(x)
+EncrptBin = bin(EncrptBin)
+print("EncrptBin")
+print(EncrptBin)
+EncrptBin = EncrptBin[2:]
+print(len(EncrptBin))
+i=0
+
+if(len(EncrptBin)%8==1):
+    start=1
+    End=0
+elif(len(EncrptBin)%8==2):
+    start=2
+    End=0
+elif(len(EncrptBin)%8==3):
+    start=3
+    End=0
+elif(len(EncrptBin)%8==4):
+    start=4
+    End=0
+elif(len(EncrptBin)%8==5):
+    start=5
+    End=0
+elif(len(EncrptBin)%8==6):
+    start=6
+    End=0
+elif(len(EncrptBin)%8==7):
+    start=7
+    End=0
+else :
+    start=0
+    End=0
+
+start=start
+temp=EncrptBin[End:start]
+print(temp)
+EncrptBinList.append(temp)
+i=1
+End=start
+start=start+8
+while i < len(EncrptBin)/8:
+    temp=EncrptBin[End:start]
+    print(temp)
+    EncrptBinList.append(temp)
+    start=start+8
+    End=End+8
+    i=i+1
+
+
+print("EncrptBinList")
+print(EncrptBinList)
+print("EncrptBinList[0]")
+print(EncrptBinList[0])
+
+
+x=EncrptBinList[0]
+
+print("x")
+
+i=0
+while i < len(EncrptBinList):
+    Temp=chr(int(EncrptBinList[i],2))
+    print(Temp)
+    TextEncrpAsc.append(Temp)
+    i=i+1
+
+print(TextEncrpAsc)
+file3 = open("Decryption.txt", "w")
+
+i=0
+while i < len(EncrptBinList):
+    file3.write( TextEncrpAsc[i])
+    i=i+1
+
+
+file3.close()
