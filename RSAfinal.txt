@@ -1,0 +1,241 @@
+import hashlib
+def FEMA(m, e, n):
+    binE=bin(e)[2:]
+    
+    i=0
+    d=1
+    while i < len(binE):
+        curE=binE[i:i+1]
+        #print(binE[i])
+        if(curE=='1'):
+            d=d*d*m
+            d=d%n
+            #print(d)
+        else :
+            d=d*d
+            d=d%n
+            #print(d)
+        i=i+1
+    
+    return d
+
+#taking parameter from the user
+def Encryption(PlainText,e,n,d,n2):
+
+
+    TextAscii =[]
+    TextBin =[]
+    i=0
+    Temp=0
+    HashMessage = "\nH\n"
+    SignMessage = "\nS\n"
+    
+    #From text to ascii
+    while i < len(TextPlain):
+        TextAscii.append(ord(TextPlain[i]))
+        i=i+1
+        
+        
+    i = 0
+    #From ascii to binary
+    while i < len(TextAscii):    
+        Temp=f'{TextAscii[i]:08b}'
+        TextBin.append(Temp)
+        i=i+1
+    
+    
+    #All binary numbers in 1 variable
+    TextBinFull=(format(0,'08b'))
+    i = 0
+    while i < len(TextBin):
+        Temp=TextBin[i]
+        TextBinFull=TextBinFull+Temp
+        i=i+1
+        
+    #binary to integer
+    TextInt = int(TextBinFull, 2)
+    
+    #Encryption
+
+    EncryptedText=FEMA(TextInt,e,n)
+    
+    #Hash md5
+    hashObject = hashlib.md5()
+    hashObject.update(TextPlain.encode('utf-8'))
+    hashObject =int(hashObject.hexdigest(), 16)
+    
+    #sign
+
+
+    Sign=FEMA(hashObject,d,n2)
+    
+    #Save in encryption.txt File
+    
+    file2 = open("encryption.txt", "w")
+
+    file2.write('%d' % EncryptedText)
+    file2.write(HashMessage)
+    file2.write('%d' % hashObject)
+    file2.write(SignMessage)
+    file2.write('%d' % S)
+    file2.close()
+    
+    return
+
+Encryption(PlainText,e,n,d,n2)
+
+_______________________________________________________________________________________________________
+
+def FEMA(m, e, n):
+    binE=bin(e)[2:]
+    
+    i=0
+    d=1
+    while i < len(binE):
+        curE=binE[i:i+1]
+        #print(binE[i])
+        if(curE=='1'):
+            d=d*d*m
+            d=d%n
+            #print(d)
+        else :
+            d=d*d
+            d=d%n
+            #print(d)
+        i=i+1
+    
+    return d
+
+
+def Decryption(TextEncrp,d,n,e,n2):
+    print(TextEncrp)
+    
+    TextDecrpInt =[]
+    TextDecrpBin  =[]
+    TextDecrpAsc =[]
+    Dencrpt = []
+    DecrptBinList = []
+    TextDecrpMessage = []
+    
+    m=int(TextEncrp)
+    
+    #Decryption
+    x=FEMA(m,d,n)
+    
+    #Decryption binary
+    DecrptBin = int(x)
+    DecrptBin = bin(DecrptBin)
+    DecrptBin = DecrptBin[2:]
+    
+    i=0
+
+    #Finding out the length of the First number
+    if(len(DecrptBin)%8==1):
+        start=1
+        End=0
+    elif(len(DecrptBin)%8==2):
+        start=2
+        End=0
+    elif(len(DecrptBin)%8==3):
+        start=3
+        End=0
+    elif(len(DecrptBin)%8==4):
+        start=4
+        End=0
+    elif(len(DecrptBin)%8==5):
+        start=5
+        End=0
+    elif(len(DecrptBin)%8==6):
+        start=6
+        End=0
+    elif(len(DecrptBin)%8==7):
+        start=7
+        End=0
+    else :
+        start=0
+        End=0
+
+    start=start
+    temp=DecrptBin[End:start]
+    #print(temp)
+    DecrptBinList.append(temp)
+    i=1
+    End=start
+    start=start+8
+    while i < len(DecrptBin)/8:
+        temp=DecrptBin[End:start]
+        #print(temp)
+        DecrptBinList.append(temp)
+        start=start+8
+        End=End+8
+        i=i+1
+
+
+    #turning binary to ascii
+    i=0
+    while i < len(DecrptBinList):
+        Temp=chr(int(DecrptBinList[i],2))
+        TextDecrpAsc.append(Temp)
+        i=i+1
+
+    file3 = open("Decryption.txt", "w")
+
+    print(TextDecrpAsc)
+    i=0
+    while i < len(DecrptBinList):
+        file3.write(TextDecrpAsc[i])
+        i=i+1
+
+    #hash
+    TextDecrpMessage = ''.join(TextDecrpAsc)
+    CalculHash = hashlib.md5()
+    CalculHash.update(TextDecrpMessage.encode('utf-8'))
+    CalculHash =int(CalculHash.hexdigest(), 16)
+
+
+    
+    Hash = []
+    flag =0
+    
+    with open("encryption.txt") as f:
+        for line in f:
+            if flag == 1:
+                Hash=line
+                flag=0
+            if flag == 2:
+                Sign=line
+                flag=0
+            if line.startswith("H"):
+                flag = 1
+            if line.startswith("S"):
+                flag = 2
+        
+            
+    Hash=int(Hash)
+
+    if(CalculHash==Hash):
+        print("Hash match")
+    else:
+        print("Hash not match")
+    
+    S=FEMA(int(Sign),e,n2)
+    
+    if(S==Hash):
+        print("Sign match")
+    else:
+        print("Sign not match")
+    
+
+    file3.close()
+    f.close()
+    
+    return
+
+
+Decryption(TextEncrp,d,n,e,n2)
+
+
+
+
+
+
