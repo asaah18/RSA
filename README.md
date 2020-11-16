@@ -1,5 +1,5 @@
 # RSA
-RSA implementation with an interface and socket proraming
+RSA implementation with an interface and socket programming
 
 # team
 Abdurrahman Alhomaidany     361112479
